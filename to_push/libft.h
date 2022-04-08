@@ -6,16 +6,13 @@
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:30:24 by jrameau           #+#    #+#             */
-/*   Updated: 2022/04/08 17:21:06 by aparedes         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:54:17 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
-# include <stdio.h>
-# include <strings.h>
-# include <ctype.h>
 # include <unistd.h>
 
 typedef struct s_list
