@@ -6,13 +6,13 @@
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:01:17 by aparedes          #+#    #+#             */
-/*   Updated: 2022/04/17 12:16:48 by aparedes         ###   ########.fr       */
+/*   Updated: 2022/04/17 12:21:57 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		tam(long n)
+static int	tam(long n)
 {
 	size_t	tam;
 	int		neg;
@@ -33,7 +33,7 @@ static int		tam(long n)
 	return (tam);
 }
 
-static char		*tam_buf(char *buffer, long nbr, int len, int neg)
+static char	*tam_buf(char *buffer, long nbr, int len, int neg)
 {
 	if (nbr != 0)
 		buffer = malloc(sizeof(char) * (len + 1));
@@ -60,7 +60,7 @@ static char		*tam_buf(char *buffer, long nbr, int len, int neg)
 	return (buffer);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*buffer;
