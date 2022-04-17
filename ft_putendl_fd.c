@@ -6,7 +6,7 @@
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:56:57 by aparedes          #+#    #+#             */
-/*   Updated: 2022/04/06 15:00:11 by aparedes         ###   ########.fr       */
+/*   Updated: 2022/04/17 11:39:23 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (s != '\0')
+	if (s != NULL)
 	{
 		ft_putstr_fd(s, fd);
 		write(fd, "\n", 1);
