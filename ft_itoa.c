@@ -6,71 +6,73 @@
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:01:17 by aparedes          #+#    #+#             */
-/*   Updated: 2022/04/06 14:53:22 by aparedes         ###   ########.fr       */
+/*   Updated: 2022/04/17 12:16:48 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_tamano(int n)
+static int		tam(long n)
 {
-	int	count;
+	size_t	tam;
+	int		neg;
 
-	if (n == 0)
-		return (1);
-	count = 0;
-	while (n != 0)
-	{
-		n = (n / 10);
-		count++;
-	}
-	return (count);
-}
-
-static void	ft_ver(int sign, char *buffer)
-{
-	if (sign == (-1))
-	{
-		buffer[0] = '-';
-	}
-}
-
-static char	*ft_buffer(int n, char *buffer, int c1)
-{
+	tam = 0;
+	neg = 0;
 	if (n < 0)
 	{
-		buffer = ft_calloc(c1 + 2, sizeof(char));
+		tam++;
+		neg++;
+		n = -n;
 	}
+	while (n >= 1)
+	{
+		tam++;
+		n /= 10;
+	}
+	return (tam);
+}
+
+static char		*tam_buf(char *buffer, long nbr, int len, int neg)
+{
+	if (nbr != 0)
+		buffer = malloc(sizeof(char) * (len + 1));
 	else
-		buffer = ft_calloc(c1 + 1, sizeof(char));
+		return (buffer = ft_strdup("0"));
+	if (!buffer)
+		return (0);
+	neg = 0;
+	if (nbr < 0)
+	{
+		neg++;
+		nbr = -nbr;
+	}
+	buffer[len] = '\0';
+	while (--len)
+	{
+		buffer[len] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
+	if (neg == 1)
+		buffer[0] = '-';
+	else
+		buffer[0] = (nbr % 10) + '0';
 	return (buffer);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	int		c1;
-	int		c2;
-	int		sign;
+	int		len;
 	char	*buffer;
+	long	nbr;
+	int		neg;
 
-	c2 = 0;
-	sign = 1;
-	c1 = ft_tamano(n);
-	buffer = NULL;
-	if (n < 0)
-	{
-		sign = -1;
-		c1++;
-	}
-	buffer = ft_buffer(n, buffer, c1);
-	if (buffer == NULL)
-		return (NULL);
-	while (c2 < c1)
-	{
-		c1--;
-		buffer[c1] = ((n % 10) * sign) + '0';
-		n = n / 10;
-	}
-	ft_ver(sign, buffer);
+	nbr = n;
+	len = tam(nbr);
+	buffer = 0;
+	neg = 0;
+	buffer = tam_buf(buffer, nbr, len, neg);
+	if (!(buffer))
+		return (0);
 	return (buffer);
 }
