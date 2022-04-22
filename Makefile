@@ -6,7 +6,7 @@
 #    By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 20:47:00 by aparedes          #+#    #+#              #
-#    Updated: 2022/04/16 20:47:04 by aparedes         ###   ########.fr        #
+#    Updated: 2022/04/21 12:57:28 by aparedes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,22 @@ BONUS		=	ft_lstnew.c			\
 				ft_lstdelone.c		\
 				ft_lstclear.c		\
 				ft_lstiter.c		\
-				ft_lstmap.c
+				ft_lstmap.c 		\
+				
+EXTRA		=	ft_putchar.c 		\
+				ft_putstrf.c 		\
+				ft_putnbrf.c 		\
+				ft_putunsignf.c 	\
+				ft_putoctal.c 		\
+				ft_puthexa.c 		\
+				ft_puthexam.c 		\
+				ft_putaddr.c 		\
 
 MAINOBJ		=	$(MAIN:.c=.o)
 BONUSOBJ	=	$(BONUS:.c=.o)
+EXTRAOBJ	=	$(EXTRA:.c=.o)
 
-$(NAME) : $(MAINOBJ) $(BONUSOBJ)
+$(NAME) : $(MAINOBJ) $(BONUSOBJ) $(EXTRAOBJ)
 	ar -rcs $(NAME) $^
 
 bonus	: $(BONUSOBJ)
@@ -72,7 +82,7 @@ bonus	: $(BONUSOBJ)
 	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	@rm -f $(MAINOBJ) $(BONUSOBJ) 
+	@rm -f $(MAINOBJ) $(BONUSOBJ) $(EXTRAOBJ)
 
 fclean:	clean
 	@rm -f $(NAME)

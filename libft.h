@@ -6,7 +6,7 @@
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:30:24 by jrameau           #+#    #+#             */
-/*   Updated: 2022/04/16 20:52:28 by aparedes         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:38:30 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,15 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+//extras
+void			ft_putchar(char c);
+void			ft_putstrf(char *s, int *p);
+void			ft_putnbrf(int n, int *p);
+void			ft_putunsignf(unsigned int n, int *p);
+void			ft_putoctal(unsigned int n, int *p);
+void			ft_puthexa(unsigned int n, int *p);
+void			ft_puthexam(unsigned int n, int *p);
+void			ft_putaddr(unsigned long n, int *p);
 
 #endif

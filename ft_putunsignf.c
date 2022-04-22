@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putunsignf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aparedes <aparedes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 11:23:59 by aparedes          #+#    #+#             */
-/*   Updated: 2022/04/20 14:28:57 by aparedes         ###   ########.fr       */
+/*   Created: 2022/04/21 14:20:01 by aparedes          #+#    #+#             */
+/*   Updated: 2022/04/21 14:20:32 by aparedes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	putchar_int(int fd, int nbr)
+static void	putchar_unsigned(int *p, unsigned int nbr)
 {
 	char	c;
 
 	c = nbr;
-	write (fd, &c, 1);
+	write (1, &c, 1);
+	*p = *p + 1;
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putunsignf(unsigned int n, int *p)
 {
-	int		nbr;
-	int		tmp1;
+	unsigned int		nbr;
+	unsigned int		tmp1;
 
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
-	{
-		if (n < 0)
-		{
-			n = n * (-1);
-			putchar_int(fd, '-');
-		}
-		nbr = n / 10;
-		tmp1 = n % 10;
-		if (nbr > 9)
-			ft_putnbr_fd(nbr, fd);
-		else if (nbr > 0)
-		{
-			putchar_int(fd, (nbr + '0'));
-		}
-		putchar_int(fd, (tmp1 + '0'));
-	}
+	nbr = n / 10;
+	tmp1 = n % 10;
+	if (nbr > 9)
+		ft_putnbrf(nbr, p);
+	else if (nbr > 0)
+		putchar_unsigned(p, (nbr + '0'));
+	putchar_unsigned(p, (tmp1 + '0'));
 }
